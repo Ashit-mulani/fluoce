@@ -1,0 +1,15 @@
+{
+  "name": "imagebox-v2",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run dev --prefix services\" \"npm run dev --prefix clients"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "concurrently": "^9.2.1"
+  }
+}

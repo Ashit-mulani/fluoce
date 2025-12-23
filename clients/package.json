@@ -1,0 +1,15 @@
+{
+  "name": "clients",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run dev --prefix auth\" \"npm run dev --prefix filesbox"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}

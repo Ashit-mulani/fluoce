@@ -1,0 +1,49 @@
+services:
+  mongo:
+    image: mongo
+    container_name: imagebox-db
+    ports:
+      - "27017:27017"
+    volumes:
+      - /C/Users/ashit/OneDrive/temp/docker-volumes/DB/imagebox-db:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: imagebox-db
+      MONGO_INITDB_ROOT_PASSWORD: MAJTHEMd04
+    restart: unless-stopped
+    networks:
+      - imagebox-network
+    entrypoint:
+      - bash
+      - -c
+      - |
+        openssl rand -base64 756 > /data/db/keyfile
+        chmod 400 /data/db/keyfile
+        chown 999:999 /data/db/keyfile
+        exec docker-entrypoint.sh mongod --replSet rs0 --bind_ip_all --keyFile /data/db/keyfile
+
+  imagebox-redis:
+    image: redis
+    container_name: imagebox-redis
+    ports:
+      - "6380:6379"
+    volumes:
+      - /C/Users/ashit/OneDrive/temp/docker-volumes/redis/imagebox-redis:/data/db
+    restart: unless-stopped
+    networks:
+      - imagebox-network
+
+  consul:
+    image: hashicorp/consul
+    container_name: consul
+    command: agent -dev -client=0.0.0.0
+    ports:
+      - "8500:8500"
+      - "8600:8600/udp"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    networks:
+      - imagebox-network
+
+networks:
+  imagebox-network:
+    driver: bridge

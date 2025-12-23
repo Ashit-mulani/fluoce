@@ -45,10 +45,10 @@ const SignUp = () => {
   };
 
   return (
-    <div className="flex flex-col gap-8 w-64">
-      <div className="flex flex-col gap-1.5 items-start">
+    <div className="flex w-64 flex-col gap-8">
+      <div className="flex flex-col items-start gap-1.5">
         <FormHeader />
-        <p className="text-xs font-medium p-0.5 text-zinc-700">
+        <p className="p-0.5 text-xs font-medium text-zinc-700">
           Sign up with email or continue with a social. Quick, simple, and
           secure.
         </p>
@@ -60,7 +60,7 @@ const SignUp = () => {
           className="flex items-center justify-center gap-3"
         >
           <Input
-            className="p-5.5 placeholder:text-sm text-sm"
+            className="p-5.5 text-sm placeholder:text-sm"
             type="email"
             placeholder="Email"
             {...register("email", {
@@ -70,30 +70,30 @@ const SignUp = () => {
           <SendBtn isLoading={isLoading} type="submit" />
         </form>
         {errors.email && (
-          <span className="text-xs flex items-center justify-center font-medium text-red-500">
+          <span className="flex items-center justify-center text-xs font-medium text-red-500">
             {errors.email.message}
           </span>
         )}
-        <div className="flex items-center justify-center gap-1 ">
-          <span className="border-t flex-1"></span>
-          <span className="text-xs font-medium shrink-0 text-zinc-500/50 -mt-1">
+        <div className="flex items-center justify-center gap-1">
+          <span className="flex-1 border-t"></span>
+          <span className="-mt-1 shrink-0 text-xs font-medium text-zinc-500/50">
             or continue with
           </span>
-          <span className="border-t flex-1"></span>
+          <span className="flex-1 border-t"></span>
         </div>
-        <div className="flex flex-col gap-2 items-center justify-center">
+        <div className="flex flex-col items-center justify-center gap-2">
           <Google />
           {/* <Facebook />
           <Apple />
           <Github /> */}
         </div>
         {error && (
-          <span className="text-[13px] flex items-center justify-center font-medium text-red-500">
+          <span className="flex items-center justify-center text-[13px] font-medium text-red-500">
             {error}
           </span>
         )}
       </div>
-      <div className=" text-[10px] items-center font-medium text-zinc-400 justify-between flex gap-2">
+      <div className="flex items-center justify-between gap-2 text-[10px] font-medium text-zinc-400">
         {refUrl && (
           <Button
             onClick={() => {

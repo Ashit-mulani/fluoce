@@ -29,6 +29,7 @@ import UploadForm from "../Usage/UploadForm";
 import { useUploadingState } from "@/hooks/useUploadingState";
 import { Spinner } from "@/components/ui/spinner";
 import CBtn from "@/components/ui/CBtn";
+import CAlertDialog from "@/components/ui/CAlertDialog";
 
 const AppTopbar = () => {
   const path = usePathname();
@@ -91,9 +92,8 @@ const AppTopbar = () => {
           <Link key={m.name} href={m.href}>
             <Button size={isBelow500 ? "sm" : ""} variant="ghost">
               <span
-                className={`${
-                  !m.inUse && "text-zinc-500"
-                } flex items-center gap-2`}
+                className={`${!m.inUse && "text-zinc-500"
+                  } flex items-center gap-2`}
               >
                 {m.icon(m.inUse)}
                 {m.name}
@@ -144,12 +144,19 @@ const AppTopbar = () => {
               )}
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuItem
-              onClick={() => mutate({ domain: filesboxUrl })}
-              className="justify-between"
+            <CAlertDialog
+              title="Confirm Logout"
+              description="Are you sure you want to logout? You will need to sign in again to access your account."
+              onSuccess={() => mutate({ domain: filesboxUrl })}
+              onSuccessChild="Logout"
             >
-              Logout <FiLogOut />
-            </DropdownMenuItem>
+              <DropdownMenuItem
+                onSelect={(e) => e.preventDefault()}
+                className="justify-between"
+              >
+                Logout <FiLogOut />
+              </DropdownMenuItem>
+            </CAlertDialog>
           </DropdownMenuContent>
         </DropdownMenu>
       </div>

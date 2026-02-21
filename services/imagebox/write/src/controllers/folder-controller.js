@@ -128,6 +128,7 @@ const trashFolder = asyncFunc(async (req, res) => {
   redisDel(`folders:${userId}`);
   redisDel(`dashboard:${userId}`);
   redisDel(`activity:${userId}`);
+  redisDel(`storage:${userId}`);
 
   return res.status(200).json(
     new apiRes(

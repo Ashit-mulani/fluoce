@@ -27,7 +27,7 @@ const ActionBtn = () => {
         className="opacity smooth rounded-full"
         onClick={() => {
           window.open(
-            "https://github.com/Ashit-mulani/imagebox/tree/v2",
+            "https://github.com/Ashit-mulani/fluoce",
             "_blank",
             "noopener noreferrer"
           );

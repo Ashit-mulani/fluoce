@@ -38,8 +38,6 @@ const Upgrade = ({ data }) => {
     ? PLAN_NAME_MAP[usage.plan.name]
     : null;
 
-  console.log(usage);
-
   const plans = [
     {
       planName: "Free",

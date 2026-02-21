@@ -1,13 +1,15 @@
-export const ALLOWED_DOMAINS = ["localhost", "imagebox.cloud"];
-
 export const isAllowedDomain = (url) => {
   try {
     const parsed = new URL(url);
     const hostname = parsed.hostname;
 
-    return ALLOWED_DOMAINS.some(
-      (allowed) => hostname === allowed || hostname.endsWith("." + allowed)
-    );
+    if (hostname === "localhost") return true;
+
+    if (hostname === "fluoce.com" || hostname.endsWith(".fluoce.com")) {
+      return true;
+    }
+
+    return false;
   } catch (e) {
     return false;
   }

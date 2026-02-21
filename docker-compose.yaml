@@ -6,20 +6,9 @@ services:
       - "27017:27017"
     volumes:
       - /C/Users/ashit/OneDrive/temp/docker-volumes/DB/imagebox-db:/data/db
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: imagebox-db
-      MONGO_INITDB_ROOT_PASSWORD: MAJTHEMd04
     restart: unless-stopped
     networks:
       - imagebox-network
-    entrypoint:
-      - bash
-      - -c
-      - |
-        openssl rand -base64 756 > /data/db/keyfile
-        chmod 400 /data/db/keyfile
-        chown 999:999 /data/db/keyfile
-        exec docker-entrypoint.sh mongod --replSet rs0 --bind_ip_all --keyFile /data/db/keyfile
 
   imagebox-redis:
     image: redis

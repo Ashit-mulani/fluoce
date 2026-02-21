@@ -1,6 +1,5 @@
 "use client";
 
-import { Spinner } from "@/components/ui/spinner";
 import { useGetMe } from "@/hooks/tanstack/auth-tanstack";
 import { authUrl, filesboxUrl } from "@/utils/const";
 import { createContext, useContext } from "react";
